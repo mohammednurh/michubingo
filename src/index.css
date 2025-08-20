@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark mode styles */
+@layer base {
+  body {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  /* Dark mode card styles */
+  .card-dark {
+    @apply dark:bg-gray-800 dark:border-gray-700 dark:text-white;
+  }
+  
+  /* Dark mode input styles */
+  .input-dark {
+    @apply dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400;
+  }
+  
+  /* Dark mode button styles */
+  .btn-dark {
+    @apply dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:border-gray-600;
+  }
+  
+  /* Dark mode modal styles */
+  .modal-dark {
+    @apply dark:bg-gray-900 dark:border-gray-700;
+  }
+  
+  /* Dark mode table styles */
+  .table-dark {
+    @apply dark:bg-gray-800 dark:border-gray-700;
+  }
+  
+  .table-cell-dark {
+    @apply dark:bg-gray-700 dark:border-gray-600 dark:text-white;
+  }
+}
