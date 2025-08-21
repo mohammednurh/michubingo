@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Calendar, Download, Eye, Filter } from 'lucide-react';
 import { supabase, Game } from '../../lib/supabase';
+import { useSettings } from '../../contexts/SettingsContext';
 
 interface GameHistoryData extends Game {
   playerNumber: number;
@@ -23,6 +24,8 @@ const AdminGameHistory: React.FC = () => {
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
+  // Commission rate
+  const { commissionRate } = useSettings();
 
   useEffect(() => {
     fetchGames();
@@ -86,7 +89,7 @@ const AdminGameHistory: React.FC = () => {
         const playerNumber = game.selected_cards?.length || 0;
         const totalCalls = Array.isArray(game.call_sequence) ? game.call_sequence.length : 0;
         const totalBetAmount = playerNumber * (game.betting_amount_birr || 0);
-        const profit = totalBetAmount * 0.2;
+        const profit = totalBetAmount * commissionRate;
   
         const host = cashiersData?.find((c: any) => String(c.id) === String(game.host_id));
   
